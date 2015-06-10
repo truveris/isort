@@ -300,7 +300,7 @@ class SortImports(object):
 
                     cont_line = self._wrap(self.config['indent'] + splitter.join(next_line).lstrip())
                     if self.config['use_parentheses']:
-                        return "{0}{1} (\n{2})".format(line, splitter, cont_line)
+                        return "{0}{1} (\n{2},\n)".format(line, splitter, cont_line)
                     return "{0}{1} \\\n{2}".format(line, splitter, cont_line)
 
         return line
