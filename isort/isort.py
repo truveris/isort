@@ -430,7 +430,18 @@ class SortImports(object):
 
         """
         output = []
-        for section in itertools.chain(SECTIONS, self.config['forced_separate']):
+        
+        remainder_of_dict = SECTIONS._asdict().values()
+        popped_item_holder =[]
+        popped_item_holder.append(remainder_of_dict.pop())
+
+        for section in itertools.chain(remainder_of_dict, self.config['forced_separate'], popped_item_holder):
+
+
+            import ipdb; ipdb.set_trace()
+
+
+
             straight_modules = list(self.imports[section]['straight'])
             straight_modules = natsorted(straight_modules, key=lambda key: self._module_key(key, self.config))
             from_modules = sorted(list(self.imports[section]['from'].keys()))
